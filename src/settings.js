@@ -1,6 +1,6 @@
 module.exports = {
 
-    title: '安全资质考试模拟平台',
+    title: '恒安职业技能学习平台',
 
     /**
    * @type {boolean} true | false

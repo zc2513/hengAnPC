@@ -8,7 +8,8 @@ function resolve(dir) {
 
 const name = defaultSettings.title || '云平台' // 页面标题
 
-const port = process.env.port || process.env.npm_config_port
+// const port = process.env.port || process.env.npm_config_port
+const port = 9527
 
 module.exports = {
     publicPath: '/',
@@ -18,7 +19,7 @@ module.exports = {
     productionSourceMap: false,
     devServer: {
         port: port,
-        open: true,
+        open: false,
         overlay: {
             warnings: false,
             errors: true

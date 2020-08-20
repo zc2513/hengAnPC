@@ -1,67 +1,66 @@
 <template>
   <div class="login-container">
-    <div class="login-header flc-y">
-      <img class="ml15" src="@/assets/login/logoIndex.png" width="350" height="56">
-    </div>
-    <div class="main flcc">
-      <div class="main-box flc-y flsb">
-        <img src="@/assets/login/slogon.png" class="leftImg">
-        <div class="login-from">
-          <div class="title mb20"> 欢迎使用本系统 </div>
-          <el-form
-            ref="loginForm"
-            size="mini"
-            :model="loginForm"
-            :rules="loginRules"
-            class="login-form"
-            auto-complete="on"
-            label-position="right"
-            hide-required-asterisk
-          >
-            <el-form-item prop="username">
-              <span class="svg-container">
-                <svg-icon icon-class="user" />
-              </span>
-              <el-input
-                ref="username"
-                v-model="loginForm.username"
-                placeholder="请输入用户名"
-                name="username"
-                type="text"
-                tabindex="1"
+    <div class="login">
+      <div class="form-box">
+        <div class="img" />
+        <div class="login-img-box">
+          <div class="login-fixed">
+            <div class="title"> 系统登录 </div>
+            <div class="form-el">
+              <el-form
+                ref="loginForm"
+                size="mini"
+                :model="loginForm"
+                :rules="loginRules"
+                class="login-form"
                 auto-complete="on"
-              />
-            </el-form-item>
+                label-position="right"
+                hide-required-asterisk
+              >
+                <el-form-item prop="username">
+                  <span class="svg-container">
+                    <svg-icon icon-class="user" />
+                  </span>
+                  <el-input
+                    ref="username"
+                    v-model="loginForm.username"
+                    placeholder="请输入用户名"
+                    name="username"
+                    type="text"
+                    tabindex="1"
+                    auto-complete="on"
+                  />
+                </el-form-item>
 
-            <el-form-item prop="password">
-              <span class="svg-container">
-                <svg-icon icon-class="password" />
-              </span>
-              <el-input
-                :key="passwordType"
-                ref="password"
-                v-model="loginForm.password"
-                :type="passwordType"
-                placeholder="请输入密码"
-                name="password"
-                tabindex="2"
-                auto-complete="on"
-                @keyup.enter.native="handleLogin"
-              />
-              <span class="show-pwd" @click="showPwd">
-                <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
-              </span>
-            </el-form-item>
-            <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
-          </el-form>
+                <el-form-item prop="password">
+                  <span class="svg-container">
+                    <svg-icon icon-class="password" />
+                  </span>
+                  <el-input
+                    :key="passwordType"
+                    ref="password"
+                    v-model="loginForm.password"
+                    :type="passwordType"
+                    placeholder="请输入密码"
+                    name="password"
+                    tabindex="2"
+                    auto-complete="on"
+                    @keyup.enter.native="handleLogin"
+                  />
+                  <span class="show-pwd" @click="showPwd">
+                    <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+                  </span>
+                </el-form-item>
+                <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
+              </el-form>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
-    <div class="floor flcc">
-      <div class="flc-y">
-        <img src="@/assets/login/qrcode.png" width="75" height="75">
-        <p class="pl15"> 陕ICP备18001791号-1      版权所有©西安华数恒安信息技术服务有限责任公司      All Rights Reserved</p>
-      </div>
+    <div class="floor">
+      版权所有 ©2019 陕西华春网络科技股份有限公司 备案号：陕ICP备06011814号-6
     </div>
   </div>
 </template>
@@ -88,8 +87,8 @@ export default {
         }
         return {
             loginForm: {
-                username: '',
-                password: ''
+                username: 'admin',
+                password: '111111'
             },
             loginRules: {
                 username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -107,7 +106,7 @@ export default {
             },
             immediate: true
         }
-    }, 
+    },
     methods: {
         showPwd() {
             if (this.passwordType === 'password') {
@@ -119,7 +118,7 @@ export default {
                 this.$refs.password.focus()
             })
         },
-        handleLogin() { 
+        handleLogin() {
             this.$refs.loginForm.validate(valid => {
                 if (valid) {
                     this.loading = true
@@ -145,9 +144,9 @@ export default {
 完善记住密码之后颜色和背景不一致;
 */
 
-$bg:#e5e5e5; //输入框使用记住密码的背景颜色
-$light_gray:#333;//输入框直接输入的字体颜色
-$cursor: #333;////输入框使用记住密码的字体颜色
+$bg:#e8f0fe;
+$light_gray:#333;
+$cursor: #333;
 
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {//不用IE我们大家都是好朋友
   .login-container .el-input input {
@@ -198,51 +197,61 @@ $cursor: #333;////输入框使用记住密码的字体颜色
 <style lang="scss" scoped>
 $dark_gray:#afc8d3;
 $light_gray:#eee;
-.login-container {
-  width: 100%;
-  height: 100vh;
-  background-color: #fff;
-  overflow: hidden;
-  .login-header{
-      height: 10vh;
-  }
-  .main{
-        height: 80vh;
-        background-image: url('../../assets/login/bg.png');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        .main-box{
-            width: 70%;
-            max-width: 1200px;
-            height: 100%;
-            .leftImg{
-                width: 40%;
-                max-width: 400px;
-                min-width: 300px;
-            }
-        }
 
-        .login-from{
-            background-color: #fff;
-            border-radius: 20px;
-            width: 380px;
-            min-width: 350px;
-            height: 280px;
-            padding: 30px;
+.login-container {
+  min-height: 100%;
+  width: 100%;
+  background-image: url('./../../assets/login/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  .login{
+    height: calc(100vh - 40px) !important;
+    height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form-box{
+      height: 400px;
+      width: 857px;
+      .img{
+        height: 64px;
+        background-image: url('../../assets/login/logo.jpg');
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      .login-img-box{
+        height: 336px;
+        background-image: url('../../assets/login/dl.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        .login-fixed{
+          position: absolute;
+          width: 260px;
+          top: 18px;
+          bottom: 30px;
+          right: 2px;
+          .title{
+            height: 68px;
+            line-height: 68px;
+            text-align: center;
+            font-size: 20px;
+            color: #0082cd;
+          }
+          .form-el{//表单容器
+            padding: 10px;
+          }
         }
-        .title{
-            color: rgba(0,102,255,1);
-            font-size: 24px;
-        }
+      }
+    }
   }
   .floor{
-      >div{
-          width: 70%;
-          max-width: 1200px;
-      }
-    height: 10vh;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFF;
     font-size: 12px;
-    color: gray;
   }
 
   .login-form {

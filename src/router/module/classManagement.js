@@ -27,7 +27,7 @@ const classManagement = {
             name: 'finish',
             component: () => import('@/views/class/finish/index'),
             meta: { title: '已结业', icon: 'finish' }
-        } 
+        }
     ]
 }
 

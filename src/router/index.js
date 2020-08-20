@@ -48,6 +48,11 @@ export const constantRoutes = [
         hidden: true
     },
     {
+        path: '/404',
+        component: () => import('@/views/404'),
+        hidden: true
+    },
+    {
         path: '/',
         component: Layout,
         redirect: '/home',
@@ -58,12 +63,7 @@ export const constantRoutes = [
             meta: { title: '机构总览', icon: 'home', affix: true }
         }]
     },
-    {
-        path: '/404',
-        component: () => import('@/views/404'),
-        hidden: true
-    },
-    classManagement, 
+    classManagement,
     {
         path: '/curriculum',
         component: Layout,
@@ -74,8 +74,8 @@ export const constantRoutes = [
             component: () => import('@/views/curriculum/index'),
             meta: { title: '课程管理', icon: 'curriculum', affix: true }
         }]
-    },    
-    system, 
+    },
+    system,
     {
         path: '/demo',
         component: Layout,
@@ -106,16 +106,6 @@ export const constantRoutes = [
                 name: 'Tree',
                 component: () => import('@/views/demo/tree/index'),
                 meta: { title: 'Tree', icon: 'tree' }
-            }
-        ]
-    },
-    {
-        path: '/element-ui',
-        component: Layout,
-        children: [
-            {
-                path: 'https://element.eleme.cn/#/zh-CN',
-                meta: { title: 'Element-UI', icon: 'link' }
             }
         ]
     },

@@ -2,19 +2,20 @@
   <div class="sidebar-logo-container" :class="{'collapse':collapse}">
     <transition name="sidebarLogoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo">
+        <img v-if="logo" :src="logo" :title="title" class="sidebar-logo">
         <h1 v-else class="sidebar-title">{{ title }} </h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 class="sidebar-title">{{ title }} </h1>
+        <img v-if="logoshow" :src="logoshow" :title="title" class="sidebar-logo">
+        <h1 v-else class="sidebar-title">{{ title }} </h1>
       </router-link>
     </transition>
   </div>
 </template>
 
 <script>
-import logoImg from '@/assets/login/logo.jpg'
+import logoShow from '@/assets/login/logoShow.png'
+import logo from '@/assets/login/logo.png'
 export default {
     name: 'SidebarLogo',
     props: {
@@ -26,7 +27,8 @@ export default {
     data() {
         return {
             title: '恒安职业技能学习平台',
-            logo: logoImg
+            logoshow: logoShow,
+            logo: logo
         }
     }
 }
@@ -64,7 +66,7 @@ export default {
 
     & .sidebar-title {
       display: inline-block;
-      margin: 0;  
+      margin: 0;
       font-weight: 600;
       line-height: 50px;
       font-size: 14px;
