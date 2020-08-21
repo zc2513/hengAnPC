@@ -72,7 +72,7 @@ export const constantRoutes = [
             path: 'curriculum',
             name: 'curriculum',
             component: () => import('@/views/curriculum/index'),
-            meta: { title: '课程管理', icon: 'curriculum', affix: true }
+            meta: { title: '课程管理', icon: 'curriculum' }
         }]
     },
     system,
