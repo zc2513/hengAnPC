@@ -1,10 +1,14 @@
 <template>
-  <section class="app-main">
+  <section class="app-main" style="background:#f2f2f2;">
     <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews">
-        <router-view :key="key" />
+        <router-view :key="key" style="padding:10px;" />
       </keep-alive>
     </transition>
+    <footer v-if="false" class="flcc">
+      <img src="@/assets/login/qrcode.png" width="75" height="75">
+      <p class="pl10"> 陕ICP备18001791号-1      版权所有©西安华数恒安信息技术服务有限责任公司      All Rights Reserved</p>
+    </footer>
   </section>
 </template>
 
@@ -29,6 +33,13 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  footer{
+      color: #999;
+      background-color: #e2e2e2;
+  }
 }
 .fixed-header+.app-main {
   padding-top: 50px;

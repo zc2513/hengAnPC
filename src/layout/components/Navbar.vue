@@ -1,8 +1,11 @@
 <template>
-  <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+  <div class="navbar flsb">
+    <div class="fl">
+      <hamburger class="hamburger-container" :is-active="sidebar.opened" @toggleClick="toggleSideBar" />
+      <breadcrumb />
+    </div>
 
-    <breadcrumb class="breadcrumb-container" />
+    <div class="fl1 flcc nav-title">学而思教育培训机构</div>
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
@@ -75,7 +78,6 @@ export default {
   .hamburger-container {
     line-height: 46px;
     height: 100%;
-    float: left;
     cursor: pointer;
     transition: background .3s;
     -webkit-tap-highlight-color:transparent;
@@ -85,12 +87,13 @@ export default {
     }
   }
 
-  .breadcrumb-container {
-    float: left;
+  .nav-title{
+    font-size: 22px;
+    font-family: 'cursive','STKaiti','KaiTi';
+    font-weight: 700;
   }
 
   .right-menu {
-    float: right;
     height: 100%;
     line-height: 50px;
 
