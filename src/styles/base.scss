@@ -1,4 +1,10 @@
   
+  .table-box{
+    border-radius: 15px;
+    background-color: #fff;
+    padding:15px 15px 10px;
+  }
+  
 // 布局
 .fl{
     display: flex;
@@ -94,6 +100,18 @@
 .f22{
     font-size: 22px;
 } 
+.f24{
+    font-size: 24px;
+} 
+.f26{
+    font-size: 26px;
+} 
+.f28{
+    font-size: 28px;
+} 
+.f30{
+    font-size: 30px;
+}  
  
 //padding-left
 .pl5{
@@ -247,6 +265,16 @@
 .mt30{
     margin-top: 30px;
 }
+
+.hfull{
+    height: 100%;
+}
+.wfull{
+    width: 100%;
+}
+
+
+
 //文字居中
 .t-c{
     text-align: center;
@@ -255,6 +283,13 @@
 .t-r{
     text-align: right;
 } 
+
+.bold{
+    font-weight: bold;
+}
+.cursor{
+    cursor: pointer;
+}
 
 .red{
     background-color: #F00;
@@ -267,4 +302,9 @@
 }
 .gay{
     background-color: #e2e2e2;
-  }
+}
+
+// 字体颜色定义
+.fontGay{
+    color: #999999; 
+}

@@ -24,9 +24,9 @@ export default {
     },
     data() {
         return {
-            tableList: [],
             lists: [],
             type: true,
+            suninfo: null,
             titles: [
                 { name: '订单编号', data: 'orderCode' },
                 { name: '订单状态', data: 'state' },
@@ -42,10 +42,11 @@ export default {
     },
     methods: {
         getVal(val) {
-            this.suninfo = val
             console.log(val)
+            this.suninfo = val
         },
         getPageData(params) {
+            console.log('分页', params)
             this.suninfo = params
             this.lists = datas.slice((params - 1) * 8, params * 8)
         }
