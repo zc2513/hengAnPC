@@ -1,6 +1,6 @@
 
 <template>
-  <div class="table-box-cls">
+  <div class="content-box-cls">
     <el-table
       ref="multipleTable"
       v-loading="isloading"
@@ -218,7 +218,7 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-.table-box-cls{
+.content-box-cls{
   /deep/{
     .el-button [class*=el-icon-]+span{
       margin: 0;

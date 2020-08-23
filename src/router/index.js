@@ -67,12 +67,21 @@ export const constantRoutes = [
     {
         path: '/curriculum',
         component: Layout,
-        redirect: '/curriculum',
         children: [{
-            path: 'curriculum',
+            path: '',
             name: 'curriculum',
             component: () => import('@/views/curriculum/index'),
             meta: { title: '课程管理', icon: 'curriculum' }
+        }]
+    },
+    {
+        path: '/student',
+        component: Layout,
+        children: [{
+            path: '',
+            name: 'student',
+            component: () => import('@/views/student/index'),
+            meta: { title: '学员管理', icon: 'student' }
         }]
     },
     system,

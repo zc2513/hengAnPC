@@ -17,6 +17,20 @@ const classManagement = {
             meta: { title: '招生中', icon: 'recruitStudent' }
         },
         {
+            path: 'createClass',
+            name: 'createClass',
+            hidden: true,
+            component: () => import('@/views/class/recruitStudent/createClass'),
+            meta: { title: '创建班级' }
+        },
+        {
+            path: 'recruitStudent/info',
+            name: 'info',
+            hidden: true,
+            component: () => import('@/views/class/recruitStudent/info'),
+            meta: { title: '详情' }
+        },
+        {
             path: 'learn',
             name: 'learn',
             component: () => import('@/views/class/learnIng/index'),

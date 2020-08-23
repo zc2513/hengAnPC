@@ -57,7 +57,7 @@
         </li>
       </ul>
     </div>
-    <div class="mt20 table-box">
+    <div class="mt20 content-box">
       <div class="flsb">
         <div class="bold">学习中班级信息</div>
         <div class="fontGay cursor" @click="btnsave($event)">更多</div>
@@ -109,6 +109,7 @@ export default {
         },
         getVal(v) {
             console.log(v)
+            this.$message(v.type)
         }
     }
 }
