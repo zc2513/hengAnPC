@@ -30,14 +30,6 @@ export default {
             this.total = datas.length
             this.lists = datas.slice((params - 1) * this.pageSize, params * this.pageSize)
         },
-        getVal(v) {
-            console.log(v)
-            if (v.type === '详情') {
-                this.$router.push('/class/recruitStudent/info')
-            } else {
-                this.$message(v.type)
-            }
-        },
         search(e) {
             console.log('搜索', e)
         }

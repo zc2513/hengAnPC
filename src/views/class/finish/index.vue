@@ -10,7 +10,7 @@
       <div class="flsb">
         <div class="bold">班级列表</div>
       </div>
-      <tablePug class="mt15" :btns="btn" :lists="lists" :titles="titles" @sendVal="getVal" />
+      <tablePug class="mt15" :btns="btn" :lists="lists" :titles="titles" @sendVal="getBtn" />
       <page :total="total" :page-size="pageSize" @pagesend="getPageData" />
     </div>
   </div>
@@ -36,6 +36,13 @@ export default {
     methods: {
         btnsave(e) {
             this.$message(e.target.innerText)
+        },
+        getBtn(v) {
+            if (v.type === '详情') {
+                this.$router.push('/class/recruitStudent/info')
+            } else {
+                this.$message(v.type)
+            }
         }
     }
 }

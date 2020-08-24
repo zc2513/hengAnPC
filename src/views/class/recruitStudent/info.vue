@@ -1,7 +1,7 @@
 
 <template>
   <!-- 招生中/详情 -->
-  <div class="home">
+  <div class="recruitStudentInfo">
     <div class="content-box">
       <div class="flsb">
         <div class="bold">查询条件</div>
@@ -12,23 +12,43 @@
       <div class="flsb">
         <div class="bold">班级列表</div>
         <div class="fontGay fle">
-          <div class="cursor" @click="btnsave($event)"> 添加学员 </div>
+          <div class="cursor ml15" @click="btnsave($event)"> 添加学员 </div>
           <div class="cursor ml15" @click="btnsave($event)"> 模板下载 </div>
           <div class="cursor ml15" @click="btnsave($event)"> 导入学员 </div>
           <div class="cursor ml15" @click="btnsave($event)"> 导出学员 </div>
           <div class="cursor ml15" @click="btnsave($event)"> 批量打印课时 </div>
         </div>
       </div>
-      <tablePug class="mt30" :btns="btn" :lists="lists" :titles="titles" @sendVal="getVal" />
+      <tablePug class="mt30" :btns="btn" :lists="lists" :titles="titles" @sendVal="getBtn" />
       <page :total="total" :page-size="pageSize" @pagesend="getPageData" />
     </div>
+    <el-dialog :modal-append-to-body="false" title="详情" :visible.sync="dialogLook">
+      <div class="lookTable">
+        <div class="lookItem fl">
+          <div>学员名称</div>
+          <div>滕三锋</div>
+          <div>身份证号</div>
+          <div>XXXXXXXXXXXXXXXXXX</div>
+        </div>
+        <div class="lookItem fl">
+          <div>手机号码</div>
+          <div>13898765432</div>
+          <div>模考成绩</div>
+          <div>92.00</div>
+        </div>
+        <div class="lookItem fl">
+          <div>学习进度</div>
+          <div class="progress">70%</div>
+        </div>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import classMixin from './../class'
 export default {
-    name: 'Home',
+    name: 'RecruitStudentInfo',
     mixins: [classMixin],
     data() {
         return {
@@ -49,13 +69,66 @@ export default {
                     { con: '查看', type: 'primary' },
                     { con: '删除', type: 'warning' }
                 ]
+            },
+            dialogLook: false,
+            looks: {
+                title: '',
+                datas: {}
             }
         }
     },
     methods: {
         btnsave(e) {
             this.$message(e.target.innerText)
+        },
+        getBtn(v) {
+            if (v.type === '查看') {
+                this.dialogLook = true
+                return
+            }
+            if (v.type === '删除') {
+                this.$confirm('是否在当前班级删除该学员?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$message('删除---待处理逻辑')
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    })
+                })
+                return
+            }
+            if (v.type === '打印课时') {
+                this.$message('打印课时---待处理')
+            }
         }
     }
 }
 </script>
+<style lang="scss" scoped>
+.recruitStudentInfo{
+    .lookTable{
+        border-top: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        .lookItem{
+            >div{
+                border-left: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                width: calc(100% / 4);
+                padding: 0 10px;
+                height: 50px;
+                line-height: 50px;
+                &:nth-child(odd){
+                    text-align: right;
+                }
+            }
+            .progress{
+                width: 75%;
+            }
+        }
+    }
+}
+</style>

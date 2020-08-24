@@ -41,21 +41,47 @@
       <el-table-column v-if="btns" fixed="right" :label="btns.title" :width="btns.width" :align="align">
         <template slot-scope="{row}">
           <div class="btnCzBox">
-            <el-button
-              v-for="(ele,y) in btns.btnlist"
-              :key="y"
-              :style="ele.style? ele.style:''"
-              :type="ele.type"
-              :size="ele.size||'mini'"
-              :icon="ele.icon"
-              :circle="ele.circle"
-              :plain="ele.plain"
-              :disabled="disableType(row,ele.con)"
-              :class="ele.className ? ele.className:classType(row,ele)"
-              @click.stop="operate(ele.con||ele.icon,row)"
-            >
-              {{ ele.con }}
-            </el-button>
+            <template v-for="(ele,y) in btns.btnlist">
+              <!-- <el-popconfirm
+                v-if="ele.con==='删除' && ele.confirm"
+                :key="y"
+                :confirm-button-text="ele.confirm.confirmButtonText || '确认'"
+                :cancel-button-text="ele.confirm.cancelButtonText || '取消'"
+                icon="el-icon-info"
+                icon-color="red"
+                :title="ele.confirm.title||'是否删除当前项'"
+              >
+                <el-button
+                  slot="reference"
+                  class="ml10"
+                  :style="ele.style? ele.style:''"
+                  :type="ele.type"
+                  :size="ele.size||'mini'"
+                  :icon="ele.icon"
+                  :circle="ele.circle"
+                  :plain="ele.plain"
+                  :disabled="disableType(row,ele.con)"
+                  :class="ele.className ? ele.className:classType(row,ele)"
+                  @click.stop="operate(ele.con||ele.icon,row)"
+                >
+                  {{ ele.con }}
+                </el-button>
+              </el-popconfirm> -->
+              <el-button
+                :key="y"
+                :style="ele.style? ele.style:''"
+                :type="ele.type"
+                :size="ele.size||'mini'"
+                :icon="ele.icon"
+                :circle="ele.circle"
+                :plain="ele.plain"
+                :disabled="disableType(row,ele.con)"
+                :class="ele.className ? ele.className:classType(row,ele)"
+                @click.stop="operate(ele.con||ele.icon,row)"
+              >
+                {{ ele.con }}
+              </el-button>
+            </template>
           </div>
         </template>
       </el-table-column>

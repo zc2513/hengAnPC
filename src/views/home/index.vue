@@ -51,8 +51,16 @@
           <div class="right waring">
             <div class="f30">预警班级</div>
             <div class="mt10 fontGay">剩余1周还有未完成课时的班级</div>
-            <div class="mt10 ">XXXXXXXXX班 </div>
-            <div class="mt10 ">XXXXXXXXXX班</div>
+            <div class="classList">
+              <div class="mt10 ">1XXXXXXXX班 </div>
+              <div class="mt10 ">2XXXXXXXXX班</div>
+              <div class="mt10 ">3XXXXXXXXX班</div>
+              <!-- <div class="mt10 ">4XXXXXXXXX班</div>
+              <div class="mt10 ">5XXXXXXXXX班</div>
+              <div class="mt10 ">6XXXXXXXXX班</div>
+              <div class="mt10 ">7XXXXXXXXX班</div>
+              <div class="mt10 ">8XXXXXXXXX班</div> -->
+            </div>
           </div>
         </li>
       </ul>
@@ -109,7 +117,19 @@ export default {
         },
         getVal(v) {
             console.log(v)
-            this.$message(v.type)
+
+            if (v.type === '结业') {
+                this.$message(`${v.type}---待处理`)
+                return
+            }
+            if (v.type === '详情') {
+                this.$router.push('/class/recruitStudent/info')
+                return
+            }
+            if (v.type === '解散') {
+                this.$message(`${v.type}---待处理`)
+                return
+            }
         }
     }
 }
@@ -155,6 +175,21 @@ export default {
                 justify-content: center;
                 padding-left: 20px;
             }
+        }
+    }
+    .classList{
+        height: 85px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-track-piece {
+            background: #d3dce6;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba($color: #000000, $alpha: 0.5);
+            border-radius: 3px;
         }
     }
 }
