@@ -117,7 +117,7 @@ export default {
                     { con: '删除', type: 'warning' }
                 ]
             },
-            dialogLook: true,
+            dialogLook: false,
             looks: {
                 title: '',
                 datas: {}
