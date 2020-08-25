@@ -55,7 +55,7 @@ export default {
     methods: {
         getBtn(v) {
             if (v.type === '详情') {
-                return this.$router.push('/class/recruitStudent/info')
+                return this.$router.push('/class/recruitStudent/info?type=recruitStudent')
             }
             if (v.type === '解散') {
                 return this.$message(v.type)

@@ -55,11 +55,6 @@
               <div class="mt10 ">1XXXXXXXX班 </div>
               <div class="mt10 ">2XXXXXXXXX班</div>
               <div class="mt10 ">3XXXXXXXXX班</div>
-              <!-- <div class="mt10 ">4XXXXXXXXX班</div>
-              <div class="mt10 ">5XXXXXXXXX班</div>
-              <div class="mt10 ">6XXXXXXXXX班</div>
-              <div class="mt10 ">7XXXXXXXXX班</div>
-              <div class="mt10 ">8XXXXXXXXX班</div> -->
             </div>
           </div>
         </li>
@@ -68,7 +63,7 @@
     <div class="mt20 content-box">
       <div class="flsb">
         <div class="bold">学习中班级信息</div>
-        <div class="fontGay cursor" @click="btnsave($event)">更多</div>
+        <div class="fontGay cursor" @click="$router.push('/class/learn')">更多</div>
       </div>
       <tablePug class="mt15" :btns="btn" :lists="lists" :titles="titles" @sendVal="getVal" />
     </div>
@@ -179,18 +174,7 @@ export default {
     }
     .classList{
         height: 85px;
-        overflow-y: auto;
-        &::-webkit-scrollbar {
-            width: 6px;
-        }
-        &::-webkit-scrollbar-track-piece {
-            background: #d3dce6;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background: rgba($color: #000000, $alpha: 0.5);
-            border-radius: 3px;
-        }
+        overflow: hidden;
     }
 }
 </style>

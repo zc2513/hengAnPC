@@ -12,7 +12,6 @@ const whiteList = ['/login'] // 白名单
 
 router.beforeEach(async(to, from, next) => {
     NProgress.start()
-
     // 页面标题设置
     document.title = getPageTitle(to.meta.title)
 

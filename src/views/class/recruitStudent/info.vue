@@ -6,17 +6,30 @@
       <div class="flsb">
         <div class="bold">查询条件</div>
       </div>
-      <search @search="search" />
+      <el-form :inline="true" :model="searchstudent" size="small" class="demo-form-inline mt15">
+        <el-form-item label="学员姓名">
+          <el-input v-model="searchstudent.name" clearable placeholder="请输入学员姓名" />
+        </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="searchstudent.phone" clearable placeholder="请输入学员手机号" />
+        </el-form-item>
+        <el-form-item label="身份证号">
+          <el-input v-model="searchstudent.card" clearable placeholder="请输入学员身份证号" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" style="width:100px;" round @click="onSubmit">搜索</el-button>
+        </el-form-item>
+      </el-form>
     </div>
     <div class="mt20 content-box">
       <div class="flsb">
-        <div class="bold">班级列表</div>
+        <div class="bold">班级/学员列表</div>
         <div class="fontGay fle">
-          <div class="cursor ml15" @click="btnsave($event)"> 添加学员 </div>
-          <div class="cursor ml15" @click="btnsave($event)"> 模板下载 </div>
-          <div class="cursor ml15" @click="btnsave($event)"> 导入学员 </div>
+          <div v-if="$route.query.type !== 'finish'" class="cursor ml15" @click="btnsave($event)"> 添加学员 </div>
+          <div v-if="$route.query.type !== 'finish'" class="cursor ml15" @click="btnsave($event)"> 模板下载 </div>
+          <div v-if="$route.query.type !== 'finish'" class="cursor ml15" @click="btnsave($event)"> 导入学员 </div>
           <div class="cursor ml15" @click="btnsave($event)"> 导出学员 </div>
-          <div class="cursor ml15" @click="btnsave($event)"> 批量打印课时 </div>
+          <div v-if="$route.query.type !== 'recruitStudent'" class="cursor ml15" @click="btnsave($event)"> 批量打印课时 </div>
         </div>
       </div>
       <tablePug class="mt30" :btns="btn" :lists="lists" :titles="titles" @sendVal="getBtn" />
@@ -54,7 +67,7 @@ export default {
         return {
             titles: [
                 { name: '序号', data: 'orderCode' },
-                { name: '学员姓名', data: 'xzqMc' },
+                { name: '学员姓名', data: 'agentName' },
                 { name: '工种', data: 'total' },
                 { name: '身份证号', data: 'orderCode' },
                 { name: '手机号码', data: 'markCode' },
@@ -74,7 +87,33 @@ export default {
             looks: {
                 title: '',
                 datas: {}
+            },
+            searchstudent: {
+                name: '',
+                phone: '',
+                card: ''
             }
+        }
+    },
+    created() {
+        const pathType = this.$route.query.type
+        if (pathType === 'recruitStudent') {
+            this.titles = this.titles.filter(e => e.name !== '完成学时')
+            this.$set(this.btn, 'btnlist', [
+                { con: '查看', type: 'primary' },
+                { con: '删除', type: 'warning' }
+            ])
+            this.$set(this.btn, 'width', 120)
+        } else if (pathType === 'learning') {
+            console.log('使用原始配置')
+        } else if (pathType === 'finish') {
+            this.$set(this.btn, 'width', 150)
+            this.$set(this.btn, 'btnlist', [
+                { con: '打印课时', type: 'warning' },
+                { con: '查看', type: 'primary' }
+            ])
+        } else {
+            this.$router.push('/404')
         }
     },
     methods: {
@@ -104,6 +143,9 @@ export default {
             if (v.type === '打印课时') {
                 this.$message('打印课时---待处理')
             }
+        },
+        onSubmit() {
+            console.log('查询', this.searchStudent)
         }
     }
 }

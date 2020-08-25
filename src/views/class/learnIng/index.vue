@@ -57,7 +57,7 @@ export default {
         getBtn(v) {
             console.log(v)
             if (v.type === '详情') {
-                return this.$router.push('/class/recruitStudent/info')
+                return this.$router.push('/class/recruitStudent/info?type=learning')
             }
             if (v.type === '二维码') {
                 this.qrCodesType = true

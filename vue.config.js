@@ -11,7 +11,7 @@ const name = defaultSettings.title || '云平台' // 页面标题
 const port = process.env.port || process.env.npm_config_port
 
 module.exports = {
-    publicPath: '/',
+    publicPath: '/dev/',
     outputDir: 'dist',
     assetsDir: 'static',
     lintOnSave: process.env.NODE_ENV === 'development',

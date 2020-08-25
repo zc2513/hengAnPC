@@ -12,7 +12,6 @@
         <div class="bold">班级列表</div>
         <div class="fontGay cursor">
           <span @click="btnsave($event)">新增课件</span>
-          <span class="ml10" style="color:#409EFF;" @click="btnsave($event)">批量上传</span>
         </div>
       </div>
       <tablePug class="mt15" :btns="btn" :lists="lists" :titles="titles" @sendVal="getVal" />

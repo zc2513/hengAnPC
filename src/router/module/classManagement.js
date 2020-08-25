@@ -28,7 +28,11 @@ const classManagement = {
             name: 'info',
             hidden: true,
             component: () => import('@/views/class/recruitStudent/info'),
-            meta: { title: '详情' }
+            beforeEnter: (to, from, next) => {
+                to.meta['activeMenu'] = from.path
+                next()
+            },
+            meta: { title: '学员列表' }
         },
         {
             path: 'learn',

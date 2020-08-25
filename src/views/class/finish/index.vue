@@ -39,7 +39,7 @@ export default {
         },
         getBtn(v) {
             if (v.type === '详情') {
-                this.$router.push('/class/recruitStudent/info')
+                this.$router.push('/class/recruitStudent/info?type=finish')
             } else {
                 this.$message(v.type)
             }

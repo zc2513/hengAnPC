@@ -27,7 +27,7 @@
             </el-form-item>
           </el-col>
           <el-col class="mb10" :span="12">
-            <el-form-item label="报名方式" prop="applyType">
+            <el-form-item label="授课方式" prop="applyType">
               <el-select v-model="formData.applyType" placeholder="请选择">
                 <el-option
                   v-for="item in options"
@@ -86,8 +86,8 @@
                   >
                     <el-table-column width="50" />
                     <el-table-column width="50">
-                      <template slot-scope="scope">
-                        <el-button size="mini" type="text" @click="previewVideo(scope.row)">预览</el-button>
+                      <template slot-scope="{row}">
+                        <el-button size="mini" type="text" @click="previewVideo(row)">预览</el-button>
                       </template>
                     </el-table-column>
                     <el-table-column prop="date" label="章节" />
@@ -134,7 +134,7 @@ export default {
             formData: {
                 className: '',
                 teacher: '',
-                applyType: '',
+                applyType: '网授',
                 industry: '',
                 phone: '',
                 peopleNum: '',
