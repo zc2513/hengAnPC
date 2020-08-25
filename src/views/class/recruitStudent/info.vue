@@ -38,7 +38,7 @@
     <el-dialog :modal-append-to-body="false" title="详情" :visible.sync="dialogLook">
       <div class="lookTable">
         <div class="lookItem fl">
-          <div>学员名称</div>
+          <div>学员姓名</div>
           <div>滕三锋</div>
           <div>身份证号</div>
           <div>XXXXXXXXXXXXXXXXXX</div>
@@ -50,9 +50,21 @@
           <div>92.00</div>
         </div>
         <div class="lookItem fl">
+          <div>顺序联系进度</div>
+          <div>309/640</div>
+          <div>完成课时</div>
+          <div>0/2</div>
+        </div>
+        <div class="lookItem fl">
+          <div>模拟考试次数</div>
+          <div>80</div>
+          <div>最高分数</div>
+          <div>97.00</div>
+        </div>
+        <!-- <div class="lookItem fl">
           <div>学习进度</div>
           <div class="progress">70%</div>
-        </div>
+        </div> -->
       </div>
     </el-dialog>
   </div>
@@ -161,10 +173,15 @@ export default {
                 border-bottom: 1px solid #ccc;
                 width: calc(100% / 4);
                 padding: 0 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 height: 50px;
-                line-height: 50px;
+                line-height: 20px;
+                overflow: hidden;
                 &:nth-child(odd){
-                    text-align: right;
+                    // justify-content: flex-end;
+                    font-weight: 600;
                 }
             }
             .progress{
