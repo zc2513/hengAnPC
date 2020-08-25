@@ -83,7 +83,7 @@ export default {
       bottom: 0px;
     }
     .el-scrollbar__wrap {
-      height: 49px;
+      min-height: 49px;
     }
     .el-scrollbar__bar.is-horizontal>div{
       // width: 100%;
