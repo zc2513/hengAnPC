@@ -35,7 +35,7 @@
       <tablePug class="mt30" :btns="btn" :lists="lists" :titles="titles" @sendVal="getBtn" />
       <page :total="total" :page-size="pageSize" @pagesend="getPageData" />
     </div>
-    <el-dialog :modal-append-to-body="false" title="详情" :visible.sync="dialogLook">
+    <el-dialog :modal-append-to-body="false" top="10vh" title="详情" :visible.sync="dialogLook">
       <div class="lookTable">
         <div class="lookItem fl">
           <div>学员姓名</div>
@@ -66,6 +66,28 @@
           <div class="progress">70%</div>
         </div> -->
       </div>
+      <el-tabs v-model="activeName" class="mt20" @tab-click="handleClick">
+        <el-tab-pane label="模考记录" name="first">
+          <el-table :data="tableData" stripe max-height="270" border>
+            <el-table-column prop="date" label="序号" width="180" />
+            <el-table-column prop="name" label="考试分数" width="180" />
+            <el-table-column prop="address" label="考试用时（分：秒）" />
+            <el-table-column prop="date" label="考试时间" />
+          </el-table>
+        </el-tab-pane>
+        <el-tab-pane label="视频学习" name="second">
+          <el-table :data="tableData" stripe max-height="270" border>
+            <el-table-column prop="date" label="序号" width="180" />
+            <el-table-column prop="name" label="课程" width="180" />
+            <el-table-column prop="address" label="课件学习时长" />
+            <el-table-column prop="date" label="学习图片">
+              <template>
+                <el-image style="width: 50px; height: 50px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" :preview-src-list="srcList" />
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-tab-pane>
+      </el-tabs>
     </el-dialog>
   </div>
 </template>
@@ -95,16 +117,51 @@ export default {
                     { con: '删除', type: 'warning' }
                 ]
             },
-            dialogLook: false,
+            dialogLook: true,
             looks: {
                 title: '',
                 datas: {}
             },
-            searchstudent: {
+            searchstudent: {// 搜索条件
                 name: '',
                 phone: '',
                 card: ''
-            }
+            },
+            activeName: 'second',
+            tableData: [{
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-02',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-04',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-01',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-08',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-06',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-07',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }],
+            srcList: [
+                'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+                'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
+                'https://fuss10.elemecdn.com/1/8e/aeffeb4de74e2fde4bd74fc7b4486jpeg.jpeg'
+            ]
         }
     },
     created() {
@@ -158,6 +215,9 @@ export default {
         },
         onSubmit() {
             console.log('查询', this.searchStudent)
+        },
+        handleClick(tab, event) {
+            console.log(tab, event)
         }
     }
 }

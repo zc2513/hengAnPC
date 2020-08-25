@@ -52,6 +52,9 @@ export default {
             }
         }
     },
+    created() {
+        this.titles = this.titles.filter(e => e.name !== '进度')
+    },
     methods: {
         getBtn(v) {
             if (v.type === '详情') {
