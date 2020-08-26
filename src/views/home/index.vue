@@ -118,7 +118,7 @@ export default {
                 return
             }
             if (v.type === '详情') {
-                this.$router.push('/class/recruitStudent/info')
+                this.$router.push('/class/recruitStudent/info?type=learning')
                 return
             }
             if (v.type === '解散') {

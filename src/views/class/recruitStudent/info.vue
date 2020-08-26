@@ -98,7 +98,7 @@ export default {
                 { con: '查看', type: 'primary' }
             ])
         } else {
-            this.$router.push('/404')
+            // this.$router.push('/404')
         }
     },
     methods: {

@@ -1,6 +1,7 @@
 <template>
   <!-- 招收中 -->
   <div class="recruitStudentIndex">
+    <router-view />
     <div class="content-box">
       <div class="flsb">
         <div class="bold">查询条件</div>

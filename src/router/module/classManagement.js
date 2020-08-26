@@ -29,7 +29,11 @@ const classManagement = {
             hidden: true,
             component: () => import('@/views/class/recruitStudent/info'),
             beforeEnter: (to, from, next) => {
-                to.meta['activeMenu'] = from.path
+                if (from.path === '/home') {
+                    to.meta['activeMenu'] = '/class/learn'
+                } else {
+                    to.meta['activeMenu'] = from.path
+                }
                 next()
             },
             meta: { title: '学员列表' }
