@@ -18,7 +18,7 @@
         <el-row>
           <el-col class="mb10" :span="12">
             <el-form-item label="班级名称" prop="className">
-              <el-input v-model="formData.className" clearable placeholder="请输入班级名称" />
+              <el-input v-model="formData.className" clearable placeholder="请输入班级名称建议：工种类型+取证/复审/换证+期号" />
             </el-form-item>
           </el-col>
           <el-col class="mb10" :span="12">
@@ -51,25 +51,31 @@
             </el-form-item>
           </el-col>
           <el-col class="mb10" :span="12">
-            <el-form-item label="联系电话" prop="phone">
+            <el-form-item label="手机号码" prop="phone">
               <el-input v-model="formData.phone" maxlength="11" show-word-limit clearable placeholder="请输入联系电话" />
             </el-form-item>
           </el-col>
           <el-col class="mb10" :span="12">
             <el-form-item label="报名人数" prop="peopleNum">
-              <el-input v-model="formData.peopleNum" clearable placeholder="请输入报名人数" />
+              <el-input v-model="formData.peopleNum" maxlength="3" clearable placeholder="请输入报名人数" />
             </el-form-item>
           </el-col>
           <el-col class="mb10" :span="12">
             <el-form-item label="开学日期" prop="startTime">
-              <el-input v-model="formData.startTime" clearable placeholder="请选择开学日期" />
+              <el-date-picker
+                v-model="value1"
+                type="daterange"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期"
+              />
             </el-form-item>
           </el-col>
-          <el-col class="mb10" :span="12">
+          <!-- <el-col class="mb10" :span="12">
             <el-form-item label="结束时间" prop="endTime">
               <el-input v-model="formData.endTime" clearable placeholder="请选择结束时间" />
             </el-form-item>
-          </el-col>
+          </el-col> -->
         </el-row>
         <div class="mt20">
           <div class="bold">已选课时（24）</div>
@@ -113,7 +119,7 @@
           <el-button type="primary" plain round @click="onSubmit">确认创建</el-button>
         </el-form-item>
       </el-form>
-      <el-dialog :modal-append-to-body="false" :visible.sync="dialogTableVisible">
+      <el-dialog :modal-append-to-body="false" :visible.sync="dialogTableVisible" :before-close="handleClose">
         <template #title>{{ video.name }} </template>
         <video autoplay controlsList="nodownload" controls :src="video.src" />
       </el-dialog>
@@ -283,6 +289,10 @@ export default {
                 src: row.video
             }
             this.dialogTableVisible = true
+        },
+        handleClose(done) {
+            this.video.src = ''
+            done()
         }
     }
 }
@@ -315,6 +325,9 @@ export default {
         .el-select{
             width: 100%;
         }
+    }
+    /deep/.el-date-editor{
+        width: 100%;
     }
     /deep/.el-table__expanded-cell[class*=cell]{
         padding: 0;

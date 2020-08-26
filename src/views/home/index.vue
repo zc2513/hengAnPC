@@ -172,9 +172,5 @@ export default {
             }
         }
     }
-    .classList{
-        height: 85px;
-        overflow: hidden;
-    }
 }
 </style>

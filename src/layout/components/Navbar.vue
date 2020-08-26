@@ -88,7 +88,7 @@ export default {
   }
 
   .nav-title{
-    font-size: 22px;
+    font-size: 24px;
     font-family: 'cursive','STKaiti','KaiTi';
     font-weight: 700;
   }
@@ -105,7 +105,7 @@ export default {
       display: inline-block;
       padding: 0 8px;
       height: 100%;
-      font-size: 18px;
+      font-size: 20px;
       color: #5a5e66;
       vertical-align: text-bottom;
 
@@ -137,7 +137,7 @@ export default {
           position: absolute;
           right: -20px;
           top: 25px;
-          font-size: 12px;
+          font-size: 14px;
         }
       }
     }

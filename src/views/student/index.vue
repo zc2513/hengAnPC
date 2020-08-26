@@ -14,6 +14,9 @@
       <tablePug class="mt15" :btns="btn" :lists="lists" :titles="titles" @sendVal="getVal" />
       <page :total="total" :page-size="pageSize" @pagesend="getPageData" />
     </div>
+    <el-dialog :modal-append-to-body="false" top="10vh" title="详情" :visible.sync="dialogLook">
+      <studentInfo />
+    </el-dialog>
   </div>
 </template>
 
@@ -21,10 +24,11 @@
 import tablePug from '@/components/table'
 import page from '@/components/table/page'
 import datas from '@/assets/json/data'
+import studentInfo from '@/components/studentInfo'
 import search from './search'
 export default {
     name: 'Home',
-    components: { tablePug, search, page },
+    components: { tablePug, search, page, studentInfo },
     data() {
         return {
             pageSize: 8,
@@ -44,6 +48,11 @@ export default {
                 btnlist: [
                     { con: '详情', type: 'primary' }
                 ]
+            },
+            dialogLook: false,
+            looks: {
+                title: '',
+                datas: {}
             }
         }
     },
@@ -60,7 +69,12 @@ export default {
         },
         getVal(v) {
             console.log(v)
-            this.$message(v.type)
+            if (v.type === '详情') {
+                this.dialogLook = true
+                return
+            } else {
+                this.$message(v.type)
+            }
         },
         search(e) {
             console.log('搜索', e)

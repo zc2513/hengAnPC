@@ -21,6 +21,7 @@
       :modal-append-to-body="false"
       custom-class="videoDialog-box"
       :visible.sync="videoDialog.type"
+      :before-close="closeVideo"
     >
       <template #title>{{ videoDialog.name }} </template>
       <video autoplay controlsList="nodownload" controls :src="videoDialog.src" />
@@ -36,6 +37,7 @@
     >
       <addFrom :edit-data="editData" />
     </el-drawer>
+
   </div>
 </template>
 
@@ -159,6 +161,10 @@ export default {
                     }, 400)
                 }, 2000)
             }).catch(_ => {})
+        },
+        closeVideo(done) {
+            this.videoDialog.src = ''
+            done()
         },
         cancelForm() {
             this.loading = false

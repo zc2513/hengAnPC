@@ -10,7 +10,9 @@
     <div class="mt20 content-box">
       <div class="flsb">
         <div class="bold">班级列表</div>
-        <div class="fontGay cursor" @click="$router.push('/class/createClass')">创建班级</div>
+        <div>
+          <el-button type="primary" round class="cursor" @click="$router.push('/class/createClass')">创建班级</el-button>
+        </div>
       </div>
       <tablePug class="mt15" :btns="btn" :lists="lists" :titles="titles" @sendVal="getBtn" />
       <page :total="total" :page-size="pageSize" @pagesend="getPageData" />
